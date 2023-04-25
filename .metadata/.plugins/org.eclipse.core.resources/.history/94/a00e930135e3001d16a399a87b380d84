@@ -1,16 +1,16 @@
 package com.furkancitilci.utils;
 
-
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Convertable {
-	//statically kept the word equivalents of the numbers as an array of their own type in a clustered manner.
 	private static final String[] KATLAR = { "", "bin", "milyon", "milyar", "trilyon"};
     private static final String[] ONLAR = { "", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
     private static final String[] BIRLER = { "", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
     
-	//kept the number equivalents of the words to be converted with static map as value
+	
 	private static final Map<String, Integer> NUMBER_LIST = new HashMap<String, Integer>() {{
         put("sıfır", 0);
         put("bir", 1);
@@ -37,7 +37,6 @@ public class Convertable {
         put("milyar", 1000000000);
     }};
 
-    //get the result as the instant value by finding the corresponding number value in the map, which comes as text
     public static int wordToNumber(String text) {
         int result = 0;
         int currentNumber = 0;
@@ -58,7 +57,7 @@ public class Convertable {
     }
 
 
-    //get our result as text, we return the long type value obtained as a result of the operation to text
+
 	public static String numberToWord(long number) {
 		 if (number == 0) {
 	            return "sıfır";

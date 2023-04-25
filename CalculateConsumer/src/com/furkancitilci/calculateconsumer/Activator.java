@@ -100,10 +100,9 @@ public class Activator implements BundleActivator {
 				long num2= Convertable.wordToNumber(textFieldIkınciSayi.getText());
 				//Mathematical operations of the converted numbers 
 				long result = num1+num2;
-				//the result obtained is returned to char type
-				char[] finalValue= String.valueOf(result).toCharArray();
+				
 				//data of type char number to word convert
-				textFieldSonuc.setText(Convertable.numberToWord(finalValue));
+				textFieldSonuc.setText(Convertable.numberToWord(result));
 			
 			}
 		});
@@ -119,10 +118,9 @@ public class Activator implements BundleActivator {
 				long num2= Convertable.wordToNumber(textFieldIkınciSayi.getText());
 				//Mathematical operations of the converted numbers 
 				long result = num1-num2;
-				//the result obtained is returned to char type
-				char[] finalValue= String.valueOf(result).toCharArray();
+				
 				//data of type char number to word convert
-				textFieldSonuc.setText(Convertable.numberToWord(finalValue));
+				textFieldSonuc.setText(Convertable.numberToWord(result));
 			}
 		});
 		btnkar.setBounds(249, 374, 85, 21);
@@ -136,10 +134,8 @@ public class Activator implements BundleActivator {
 				long num2= Convertable.wordToNumber(textFieldIkınciSayi.getText());
 				//Mathematical operations of the converted numbers 
 				long result = num1*num2;
-				//the result obtained is returned to char type
-				char[] finalValue= String.valueOf(result).toCharArray();
 				//data of type char number to word convert
-				textFieldSonuc.setText(Convertable.numberToWord(finalValue));
+				textFieldSonuc.setText(Convertable.numberToWord(result));
 			}
 		});
 		btnarp.setBounds(366, 374, 85, 21);
@@ -153,10 +149,8 @@ public class Activator implements BundleActivator {
 				long num2= Convertable.wordToNumber(textFieldIkınciSayi.getText());
 				//Mathematical operations of the converted numbers 
 				long result = num1/num2;
-				//the result obtained is returned to char type
-				char[] finalValue= String.valueOf(result).toCharArray();
 				//data of type char number to word convert
-				textFieldSonuc.setText(Convertable.numberToWord(finalValue));
+				textFieldSonuc.setText(Convertable.numberToWord(result));
 			}
 		});
 		btnBl.setBounds(501, 374, 85, 21);

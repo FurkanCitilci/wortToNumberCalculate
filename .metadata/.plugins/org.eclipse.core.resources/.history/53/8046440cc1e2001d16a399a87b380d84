@@ -1,0 +1,169 @@
+package com.furkancitilci.utils;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Convertable {
+	
+	private static final Map<String, Integer> NUMBER_LIST = new HashMap<String, Integer>() {{
+        put("sıfır", 0);
+        put("bir", 1);
+        put("iki", 2);
+        put("üç", 3);
+        put("dört", 4);
+        put("beş", 5);
+        put("altı", 6);
+        put("yedi", 7);
+        put("sekiz", 8);
+        put("dokuz", 9);
+        put("on", 10);
+        put("yirmi", 20);
+        put("otuz", 30);
+        put("kırk", 40);
+        put("elli", 50);
+        put("altmış", 60);
+        put("yetmiş", 70);
+        put("seksen", 80);
+        put("doksan", 90);
+        put("yüz", 100);
+        put("bin", 1000);
+        put("milyon", 1000000);
+        put("milyar", 1000000000);
+    }};
+
+    public static int wordToNumber(String text) {
+        int result = 0;
+        int currentNumber = 0;
+        for (String word : text.split(" ")) {
+            Integer value = NUMBER_MAP.get(word);
+            if (value != null) {
+                if (value < 100) {
+                    currentNumber += value;
+                } else {
+                    currentNumber *= value;
+                    result += currentNumber;
+                    currentNumber = 0;
+                }
+            }
+        }
+        result += currentNumber;
+        return result;
+    }
+
+	
+	
+
+
+	public static String numberToWord(char num[]) {
+		int len = num.length;
+
+		if (len == 0) {
+
+			System.out.println("The string is empty.");
+
+		}
+
+		if (len > 5) {
+
+			System.out.println("\n The given number has more than 5 digits.");
+
+		}
+
+		String[] onedigit = new String[] { "sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz",
+				"dokuz" };
+
+		String[] twodigits = new String[] { "", "on", "onbir", "oniki", "onüç", "ondört", "onbeş", "onaltı", "onyedi",
+				"onsekiz", "ondokuz" };
+
+		String[] multipleoftens = new String[] { "", "", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen",
+				"doksan" };
+
+		String[] poweroftens = new String[] { "yüz", "bin","onbin" };
+
+		
+		System.out.print(String.valueOf(num) + ": ");
+		String oneDigit = "";
+		String pow = "";
+		String twoDigit = "";
+		String multiple = "";
+		String toplam = "";
+
+		if (len == 1) {
+
+			System.out.println(onedigit[num[0] - '0']);
+			oneDigit = onedigit[num[0] - '0'];
+			toplam = oneDigit;
+
+		}
+		int x = 0;
+
+		while (x < num.length) {
+			if (len >= 3) {
+				if (num[x] - '0' != 0) {
+					System.out.print(onedigit[num[x] - '0'] + " ");
+					oneDigit = onedigit[num[x] - '0'] + " ";
+					toplam =toplam+ oneDigit;
+					System.out.print(poweroftens[len - 3] + " ");
+					pow = poweroftens[len - 3] + " ";
+					toplam = toplam + pow;
+
+				}
+				--len;
+			}
+
+			else {
+				if (len == 1) {
+					break;
+				} else {
+					if (num[x] - '0' == 1) {
+						
+						try {
+						int sum = num[x] - '0' + num[x + 1] - '0';
+						System.out.println(twodigits[sum]);
+						twoDigit = twodigits[sum];
+						toplam = toplam + twoDigit;
+						} catch (ArrayIndexOutOfBoundsException e) {
+							e.getMessage();
+						}
+						
+
+					}
+
+					else if (num[x] - '0' == 2 && num[x + 1] - '0' == 0) {
+
+						System.out.println("Twenty");
+
+					}
+
+					else {
+						int i = (num[x] - '0');
+						if (i > 0) {
+							System.out.print(multipleoftens[i] + " ");
+							multiple = multipleoftens[i] + " ";
+							toplam = toplam + " " + multiple;
+						}
+
+						else
+
+							System.out.print("");
+
+						++x;
+
+						if (num[x] - '0' != 0) {
+							System.out.println(onedigit[num[x] - '0']);
+							toplam = toplam + (onedigit[num[x] - '0']);
+						}
+
+					}
+				}
+			}
+
+			++x;
+		}
+		return toplam;
+
+	}
+
+}
